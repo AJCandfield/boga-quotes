@@ -1,0 +1,16 @@
+[tool.black]
+line-length = 88
+exclude = '''
+\.git
+| \.tox
+| _build
+| build
+| dist
+| __pycache__
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_third_party = ["fastapi", "uvicorn"]
+force_single_line = true

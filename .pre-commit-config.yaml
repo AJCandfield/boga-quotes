@@ -1,0 +1,76 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trailing Whitespace Fixer
+        description: "Removes trailing whitespace from lines"
+        language: python
+        types: [text]
+
+      - id: end-of-file-fixer
+        name: End of File Fixer
+        description: "Ensures files end with a newline"
+        language: python
+        types: [text]
+
+      - id: check-yaml
+        name: YAML Syntax Checker
+        description: "Checks the syntax of YAML files"
+        language: python
+        types: [yaml]
+
+      - id: check-json
+        name: JSON Syntax Checker
+        description: "Checks the syntax of JSON files"
+        language: python
+        types: [json]
+
+      - id: check-added-large-files
+        name: Large File Checker
+        description: "Prevents adding large files to the repository"
+        language: python
+        args: [--maxkb=500]  # Set max file size to 500KB
+        types: [file]
+
+      - id: detect-aws-credentials
+        name: AWS Credentials Detector
+        description: "Scans for AWS credentials"
+        language: python
+        types: [text]
+        exclude: ^tests/
+
+      - id: detect-private-key
+        name: Private Key Detector
+        description: "Scans for private keys"
+        language: python
+        types: [text]
+        exclude: ^tests/
+
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/psf/black
+    rev: 23.1.0
+    hooks:
+      - id: black
+        name: Black Formatter
+        description: "Formats Python code with Black"
+        language: python
+        types: [python]
+        language_version: python3.12
+        exclude: ^docs/
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 4.0.1
+    hooks:
+    - id: flake8
+      name: Flake8 Code Linter
+      description: "Checks Python code for style and quality issues using Flake8"
+      language: python
+      types: [python]
