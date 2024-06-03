@@ -50,30 +50,15 @@ repos:
         types: [text]
         exclude: ^tests/
 
-  - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.10.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.4.7
     hooks:
-      - id: isort
-
-  - repo: https://github.com/psf/black
-    rev: 24.4.2
-    hooks:
-      - id: black
-        name: Black Formatter
-        description: "Formats Python code with Black"
-        language: python
-        types: [python]
-        language_version: python3.12
-        exclude: ^docs/
-
-  - repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
-    hooks:
-    - id: flake8
-      name: Flake8 Code Linter
-      description: "Checks Python code for style and quality issues using Flake8"
-      language: python
-      types: [python]
+      # Run the linter.
+      - id: ruff
+        args: [ --fix ]
+      # Run the formatter.
+      - id: ruff-format
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.10.0
