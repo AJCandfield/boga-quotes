@@ -1,8 +1,26 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "boga-quotes"
 version = "0.0.1"
 description = "API to server random quotes from Kitboga."
 authors = ["alex.candfield@gmail.com"]
+readme = "README.md"
+# Poetry assumes your package contains a package with the same name as tool.poetry.name
+# located in the root of your project
+packages = [{ include = "boga-quotes" }]
+# https://python-poetry.org/docs/basic-usage/#operating-modes
+package-mode = false
+
+# poetry add ...
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.0"
+
+# poetry add ... --group dev
+[tool.poetry.group.dev.dependencies]
 
 [tool.ruff]
 ignore = ["E203", "E266", "W503"]
