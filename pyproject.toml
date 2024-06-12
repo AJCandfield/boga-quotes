@@ -10,7 +10,7 @@ authors = ["alex.candfield@gmail.com"]
 readme = "README.md"
 # Poetry assumes your package contains a package with the same name as tool.poetry.name
 # located in the root of your project
-packages = [{ include = "boga-quotes" }]
+packages = [{ include = "boga_quotes" }]
 # https://python-poetry.org/docs/basic-usage/#operating-modes
 package-mode = false
 
