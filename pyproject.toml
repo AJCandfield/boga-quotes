@@ -23,7 +23,7 @@ fastapi = "^0.111.0"
 [tool.poetry.group.dev.dependencies]
 
 [tool.ruff]
-ignore = ["E203", "E266", "W503"]
+ignore = ["E203", "E266"]
 
 [tool.mypy]
 python_version = "3.12"
