@@ -50,27 +50,56 @@ repos:
         types: [text]
         exclude: ^tests/
 
+  # Lint: Dockerfile
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.13.0-beta
+    hooks:
+      - id: hadolint-docker
+        entry: hadolint/hadolint:v2.12.1-beta hadolint
+
+  # Lint: Dockerfile
+  # We're linting .dockerfile files as well
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.13.0-beta
+    hooks:
+      - id: hadolint-docker
+        name: Lint *.dockerfile Dockerfiles
+        entry: hadolint/hadolint:v2.12.1-beta hadolint
+        types: [file]
+        files: \.dockerfile$
+
   - repo: https://github.com/python-poetry/poetry
     rev: "1.8.0"
     hooks:
       - id: poetry-check
+        name: Validate Poetry config
+        description: Run poetry check to validate config
       - id: poetry-lock
+        name: Update Poetry lock file
+        description: Run poetry lock to update lock file
       - id: poetry-export
+        name: Export lock file to requirements.txt
+        description: Run poetry export to sync lock file with requirements.txt
       - id: poetry-install
+        name: Install Poetry dependencies
+        description: Run poetry install to install dependencies from the lock file
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
-    rev: v0.4.7
+    rev: v0.4.8
     hooks:
       # Run the linter.
       - id: ruff
+        name: Ruff code check
         args: [--fix]
       # Run the formatter.
       - id: ruff-format
+        name: Ruff code format
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.10.0
     hooks:
       - id: mypy
+        name: Run mypy for Python type-checking
         additional_dependencies:
           - pydantic

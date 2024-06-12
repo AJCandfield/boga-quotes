@@ -1,0 +1,12 @@
+name: boga-quotes
+services:
+  main:
+    hostname: fastapi-main
+    container_name: fastapi-main
+    command: "fastapi run boga_quotes/main.py --port 80"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    expose:
+      - 80:80
+    restart: unless-stopped
