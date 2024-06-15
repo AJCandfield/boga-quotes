@@ -1,0 +1,14 @@
+---
+changelog:
+  categories:
+    - title: Breaking Changes 🧨
+      labels:
+        - major
+        - breaking
+    - title: New Features 🚀
+      labels:
+        - minor
+        - enhancement
+    - title: Other Changes 🏗️
+      labels:
+        - "*"
